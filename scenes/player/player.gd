@@ -9,6 +9,7 @@ func _process(delta: float) -> void:
 	var movement_vector = get_movement_vector()
 	var direction = movement_vector.normalized()
 	velocity = direction * MAX_SPEED
+	# 根据 velocity 移动该物体
 	move_and_slide()
 	
 # 获取玩家移动偏移量
