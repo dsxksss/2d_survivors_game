@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dorxkk6k8fips"
-path="res://.godot/imported/tile_0104.png-40f626ff212afa349227f5a05f416850.ctex"
+path="res://.godot/imported/sword.png-119f84f88e7c76c57174c8817029a806.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/tile_0104.png"
-dest_files=["res://.godot/imported/tile_0104.png-40f626ff212afa349227f5a05f416850.ctex"]
+source_file="res://scenes/ability/sword_ability/sword.png"
+dest_files=["res://.godot/imported/sword.png-119f84f88e7c76c57174c8817029a806.ctex"]
 
 [params]
 
