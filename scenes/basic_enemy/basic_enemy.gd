@@ -6,7 +6,6 @@ const MAX_SPEED = 75
 func _ready() -> void:
 	$Area2D.area_entered.connect(on_area_entered)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var direction = get_player_position()
