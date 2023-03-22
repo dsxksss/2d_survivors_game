@@ -9,7 +9,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	acquire_target()
 	# 平滑移动视角
-	global_position = global_position.lerp(target_position,1.0 - exp(-delta * 10))
+	global_position = global_position.lerp(target_position,1.0 - exp(-delta * 20))
 	
 # 视角移动
 func acquire_target():
