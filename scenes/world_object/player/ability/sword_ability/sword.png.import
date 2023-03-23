@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjyo6cqfvec6x"
-path="res://.godot/imported/experience_vial.png-a66494f48301cfcd53d73e53fb4b14ff.ctex"
+uid="uid://dorxkk6k8fips"
+path="res://.godot/imported/sword.png-ec4a7f434197ecd1acf63065aaf8c9ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/world_objects/player_packs/experience/experience_vial.png"
-dest_files=["res://.godot/imported/experience_vial.png-a66494f48301cfcd53d73e53fb4b14ff.ctex"]
+source_file="res://scenes/world_object/player/ability/sword_ability/sword.png"
+dest_files=["res://.godot/imported/sword.png-ec4a7f434197ecd1acf63065aaf8c9ff.ctex"]
 
 [params]
 
