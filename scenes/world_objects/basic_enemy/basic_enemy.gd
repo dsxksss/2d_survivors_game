@@ -5,7 +5,7 @@ const MAX_SPEED = 40
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# 单物体被接触时触发
+	# 当物体被接触时触发
 	$Area2D.area_entered.connect(on_area_entered)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
