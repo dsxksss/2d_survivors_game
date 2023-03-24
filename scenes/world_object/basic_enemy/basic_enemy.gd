@@ -3,7 +3,8 @@ extends CharacterBody2D
 # 移动速度
 const MAX_SPEED = 40
 
-# Called when the node enters the scene tree for the first time.
+@onready var health_component:HealthComponent = $HealthComponent
+
 func _ready() -> void:
 	# 当物体被接触时触发
 	$Area2D.area_entered.connect(on_area_entered)
@@ -22,5 +23,5 @@ func get_player_position():
 	return Vector2.ZERO
 
 func on_area_entered(other_area:Area2D):
-	# 当碰撞之后释放自身
-	queue_free()
+	# 当碰撞之后受伤100点伤害
+	health_component.damage(100)
