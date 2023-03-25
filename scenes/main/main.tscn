@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://df5rb8gj8vbva"]
+[gd_scene load_steps=11 format=3 uid="uid://df5rb8gj8vbva"]
 
 [ext_resource type="TileSet" uid="uid://c8nntdqurgr76" path="res://resources/tileset.tres" id="1_3xden"]
 [ext_resource type="PackedScene" path="res://scenes/manager/enemy_manager.tscn" id="1_8x44o"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://ycrw38mfkcdc" path="res://scenes/ui/arena_time_ui.tscn" id="1_ju70t"]
 [ext_resource type="PackedScene" uid="uid://bto1t1cy4lvye" path="res://scenes/manager/arena_time_manager.tscn" id="2_1w2os"]
 [ext_resource type="PackedScene" uid="uid://bfstdy8a82c1v" path="res://scenes/ui/experience_bar.tscn" id="2_10wf8"]
-[ext_resource type="PackedScene" path="res://scenes/manager/experience_manager.tscn" id="2_tb888"]
+[ext_resource type="PackedScene" uid="uid://bcu3m7qrmkv8q" path="res://scenes/manager/experience_manager.tscn" id="2_tb888"]
 [ext_resource type="PackedScene" uid="uid://6k6y87rfq3ht" path="res://scenes/manager/upgrade_manager.tscn" id="4_owogt"]
+[ext_resource type="PackedScene" uid="uid://utebjb8gr2en" path="res://scenes/ui/upgrade_screen.tscn" id="7_ft8xq"]
 
 [node name="Main" type="Node"]
 
@@ -20,12 +21,13 @@ experience_manager = NodePath("../ExperienceManager")
 
 [node name="EnemyManager" parent="." instance=ExtResource("1_8x44o")]
 
-[node name="UpgradeManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("4_owogt")]
-experience_manager = NodePath("../ExperienceManager")
+[node name="ArenaTimeManager" parent="." instance=ExtResource("2_1w2os")]
 
 [node name="ExperienceManager" parent="." instance=ExtResource("2_tb888")]
 
-[node name="ArenaTimeManager" parent="." instance=ExtResource("2_1w2os")]
+[node name="UpgradeManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("4_owogt")]
+experience_manager = NodePath("../ExperienceManager")
+upgrade_screen_scene = ExtResource("7_ft8xq")
 
 [node name="GameCamera" parent="." instance=ExtResource("1_f8p8c")]
 
