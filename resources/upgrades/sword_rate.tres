@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ci1r3j3ony3r3"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ablilty_upgrade.gd" id="1_4dsdc"]
+
+[resource]
+script = ExtResource("1_4dsdc")
+id = "sword_rate"
+name = "挥剑速度"
+description = "增加10%挥剑速度"
