@@ -23,6 +23,8 @@ func on_level_up(current_level: int):
 	add_child(upgrade_screen_instance)
 	# 连续渲染各各能力卡片至能力选择页面上
 	upgrade_screen_instance.set_ability_upgrades([chosen_upgrade] as Array[AbilityUpgrade])
+	# 检测选中了哪个能力升级
+	upgrade_screen_instance.upgrade_selected.connect(on_upgrade_selected)
 	
 
 func apply_upgrade(upgrade: AbilityUpgrade):
@@ -39,3 +41,6 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 		# 如果存在则将技能等级加一级
 		current_upgrades[upgrade.id]["quantity"] += 1
 	print(current_upgrades)
+
+func on_upgrade_selected(upgrade: AbilityUpgrade):
+	apply_upgrade(upgrade)
