@@ -29,6 +29,7 @@ func on_died():
 	# 掉落物品的场景实例
 	var vial_instance = vial_scene.instantiate() as Node2D
 	# 给当前对象添加掉落物品
-	owner.get_parent().add_child(vial_instance)
+	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
+	entities_layer.add_child(vial_instance)
 	# 将掉落物品位置设置到对象所在的位置上
 	vial_instance.global_position = spawn_position
