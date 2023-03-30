@@ -1,19 +1,31 @@
 extends CharacterBody2D
 
-@onready var damage_interval_timer = $DamageIntervalTimer
-
 # 移动速度
 const MAX_SPEED = 125
 # 加速度
 const ACCELERATION_SMOOTHING = 25
 
+@onready var damage_interval_timer = $DamageIntervalTimer
+@onready var health_component = $HealthComponent
+@onready var collision_area2D = $CollisionArea2D
+@onready var health_bar:ProgressBar = $HealthBar
+
+# 非玩家造成的身体碰撞数量
 var number_colliding_bodies = 0
 
 func _ready() -> void:
-	$CollisionArea2D.body_entered.connect(on_body_entered)
-	$CollisionArea2D.body_exited.connect(on_body_exited)
+	# 当玩家身体被触发时
+	collision_area2D.body_entered.connect(on_body_entered)
+	# 当玩家身体被触发后离开触发时	
+	collision_area2D.body_exited.connect(on_body_exited)
+	# 当伤害检测器按时间检测时
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
-
+	# 当血量发生变化时
+	health_component.health_changed.connect(on_health_changed)
+	
+	# 确保在游戏开始时就显示血量
+	update_health_display()
+	
 # 获取玩家移动偏移量
 func get_movement_vector():
 	var x_movement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -31,12 +43,17 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	
 func check_deal_damage():
+	# 如果没有其他触碰玩家的对象、定时伤害检测器停止工作时，则不检查玩家是否死亡
 	if number_colliding_bodies == 0 || !damage_interval_timer.is_stopped():
 		return
-	$HealthComponent.damage(1)
+	# 玩家被攻击受到1点攻击
+	health_component.damage(1)
+	# 重置时间
 	damage_interval_timer.start()
-	print($HealthComponent.current_health)
-	
+
+func update_health_display():
+	health_bar.value = health_component.get_health_percent()
+		
 func on_body_entered(other_body: Node2D):
 	number_colliding_bodies += 1
 	check_deal_damage()
@@ -46,3 +63,6 @@ func on_body_exited(other_body: Node2D):
 
 func on_damage_interval_timer_timeout():
 	check_deal_damage()
+
+func on_health_changed():
+	update_health_display()

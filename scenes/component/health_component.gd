@@ -4,10 +4,13 @@ class_name HealthComponent
 
 # 死亡信号
 signal died
+# 血量更新信号
+signal health_changed
 
 # 最大血量
 @export var max_health: float = 10
 
+# 当前血量
 var current_health
 
 func _ready() -> void:
@@ -17,8 +20,15 @@ func _ready() -> void:
 func damage(damage_amount: float):
 	# max函数只取两边的最大值
 	current_health = max(current_health - damage_amount, 0)
+	health_changed.emit()
 	# 在下一个空闲帧中再调用检查是否受伤死亡函数
 	Callable(check_death).call_deferred()
+
+func get_health_percent() -> float:
+	if max_health <= 0:
+		return 0
+	return min(current_health / max_health, 1)
+
 
 func check_death():
 	if current_health == 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://jdkjtgtnlblm"]
+[gd_scene load_steps=10 format=3 uid="uid://jdkjtgtnlblm"]
 
 [ext_resource type="Script" path="res://scenes/world_object/player/player.gd" id="1_lw5lj"]
 [ext_resource type="PackedScene" uid="uid://cbdtg5yup3rug" path="res://scenes/component/health_component.tscn" id="2_a35n6"]
@@ -13,6 +13,17 @@ radius = 25.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n2265"]
 radius = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6ftl"]
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytswm"]
+bg_color = Color(0.262745, 0.882353, 0.701961, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
@@ -34,10 +45,12 @@ texture = ExtResource("3_18w0e")
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_6wpu3")
 
 [node name="PickupArea2D" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, -5)
 collision_layer = 16
 collision_mask = 0
@@ -46,9 +59,25 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_lct66")
 
 [node name="CollisionArea2D" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, -7)
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
 shape = SubResource("CircleShape2D_n2265")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(32, 4)
+offset_left = -16.0
+offset_top = -23.0
+offset_right = 16.0
+offset_bottom = -19.0
+pivot_offset = Vector2(16, 2)
+theme_override_styles/background = SubResource("StyleBoxFlat_s6ftl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ytswm")
+max_value = 1.0
+value = 0.53
+show_percentage = false
