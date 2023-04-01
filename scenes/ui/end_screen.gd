@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@onready var titleLabel:Label = $%TitleLabel
+@onready var descriptionLabel:Label = $%DescriptionLabel
 @onready var restartButton:Button = $%RestartButton
 @onready var quitButton:Button = $%QuitButton
 
@@ -8,6 +10,14 @@ func _ready() -> void:
 	get_tree().paused = true
 	restartButton.pressed.connect(on_restart_button_pressed)
 	quitButton.pressed.connect(on_quit_button_pressed)
+	
+func set_lost_screen():
+	titleLabel.text = "游戏结束"
+	descriptionLabel.text = "玩家死亡,你输了!"
+
+func set_won_screen():
+	titleLabel.text = "游戏结束"
+	descriptionLabel.text = "你赢得了游戏的胜利!!"
 	
 func on_restart_button_pressed():
 	# 记住得先解除游戏暂停再去重载场景
