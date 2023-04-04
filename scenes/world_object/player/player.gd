@@ -2,12 +2,20 @@ extends CharacterBody2D
 
 # 移动速度
 const MAX_SPEED = 125
+
 # 加速度
 const ACCELERATION_SMOOTHING = 25
 
+# 基本受伤害扣血量
+const BASE_HEALTH_DAMAGER = 1
+
+# 伤害间隙计算时间器
 @onready var damage_interval_timer = $DamageIntervalTimer
+# 生命组件
 @onready var health_component = $HealthComponent
+# 碰撞组件
 @onready var collision_area2D = $CollisionArea2D
+# 生命条
 @onready var health_bar:ProgressBar = $HealthBar
 
 # 非玩家造成的身体碰撞数量
@@ -47,8 +55,8 @@ func check_deal_damage():
 	if number_colliding_bodies == 0 || !damage_interval_timer.is_stopped():
 		return
 	# 玩家被攻击受到1点攻击
-	health_component.damage(1)
-	# 重置时间
+	health_component.damage(BASE_HEALTH_DAMAGER)
+	# 重置伤害间隔计算时间
 	damage_interval_timer.start()
 
 func update_health_display():

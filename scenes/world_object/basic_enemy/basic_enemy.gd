@@ -1,15 +1,15 @@
 extends CharacterBody2D
 
-# 移动速度
+# 最大移动速度
 const MAX_SPEED = 40
 
+# 生命组件
 @onready var health_component:HealthComponent = $HealthComponent
 
 func _ready() -> void:
 	# 当物体被接触时触发
 	$Area2D.area_entered.connect(on_area_entered)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var direction = get_player_position()
 	velocity = direction * MAX_SPEED

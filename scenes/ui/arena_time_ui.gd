@@ -6,7 +6,9 @@ extends CanvasLayer
 func _process(delta: float) -> void:
 	if arena_time_manager == null:
 		return
+	# 获取已用的时间
 	var time_elapsed = arena_time_manager.get_time_elapsed()
+	# 连续渲染并格式化输出至屏幕上
 	label.text = format_seconds_to_string(time_elapsed)
 
 func format_seconds_to_string(seconds: float):

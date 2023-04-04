@@ -1,7 +1,10 @@
 extends Node
 
+# 技能升级池
 @export var upgrade_pool: Array[AbilityUpgrade]
+#  经验管理器
 @export var experience_manager: ExperienceManager
+# 技能升级选择页面场景
 @export var upgrade_screen_scene: PackedScene
 
 # 玩家当前已有的能力集
@@ -40,6 +43,7 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 	else:
 		# 如果存在则将技能等级加一级
 		current_upgrades[upgrade.id]["quantity"] += 1
+	# 技能升级后
 	GameEvents.emit_ability_upgrade_added(upgrade,current_upgrades)
 
 func on_upgrade_selected(upgrade: AbilityUpgrade):

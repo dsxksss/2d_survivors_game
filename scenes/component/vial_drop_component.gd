@@ -7,20 +7,21 @@ extends Node
 # 对象健康状态组件索引
 @export var health_component:Node
 
-
 func _ready() -> void:
 	# 如果该对象发出了died信号，则执行on_died函数
 	(health_component as HealthComponent).died.connect(on_died)
 	
 # 当对象死亡时做的事情
 func on_died():
-	# 检查掉落几率
+	# 当随机数大于掉落几率时，则不掉落物品
 	if randf() > drop_percent:
 		return
 		
+	# 当物品场景为null时，则不掉落物品
 	if vial_scene == null:
 		return
 	
+	# 当“自身”不为Node2D对象时，则也不掉落物品
 	if not owner is Node2D:
 		return
 	

@@ -29,7 +29,7 @@ func get_health_percent() -> float:
 		return 0
 	return min(current_health / max_health, 1)
 
-
+# 检查死亡函数
 func check_death():
 	if current_health == 0:
 		# 当受伤达到一定量级则通知触发died相关的信号

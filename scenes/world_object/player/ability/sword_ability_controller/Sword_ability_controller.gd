@@ -2,9 +2,12 @@ extends Node
 
 # 技能触发范围
 const MAX_RANGE = 150
-var base_wait_time
+# 生成剑基础时间
+var base_wait_time: float
+# 剑伤害
 var damage = 5
 
+# 剑场景
 @export var sword_ability:PackedScene
 
 func _ready():
@@ -39,13 +42,19 @@ func on_timer_timeout():
 		return a_distance < b_distance
 	)
 	
+	# 加载剑场景实例
 	var sword_instance = sword_ability.instantiate() as Node2D
+	
+	# 将剑场景放置到foreground层
 	var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
 	foreground_layer.add_child(sword_instance)
 	sword_instance.global_position = enemies[0].global_position
 	sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0,TAU)) * 4
 	
+	# 获取敌人方向
 	var enemy_direction = enemies[0].global_position - sword_instance.global_position
+	
+	# 剑生成角度朝向敌人
 	sword_instance.rotation = enemy_direction.angle()
 
 func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):

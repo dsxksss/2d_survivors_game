@@ -8,7 +8,9 @@ extends CanvasLayer
 func _ready() -> void:
 	# 暂停游戏
 	get_tree().paused = true
+	# 当按下重新启动按钮后触发on_restart_button_pressed函数
 	restartButton.pressed.connect(on_restart_button_pressed)
+	# 当按下退出按钮后触发on_quit_button_pressed函数
 	quitButton.pressed.connect(on_quit_button_pressed)
 	
 func set_lost_screen():
