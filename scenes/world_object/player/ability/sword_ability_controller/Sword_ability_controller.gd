@@ -63,7 +63,7 @@ func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary
 		return
 	var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .1
 	# 缩减生成剑时间
-	$Timer.wait_time = base_wait_time * (1 - percent_reduction)
+	$Timer.wait_time = max(base_wait_time * (1 - percent_reduction), 0)
 	# 因为时间触发会一直执行，所以得重置一下时间设置
 	# 如果 time_sec > 0，则会将 wait_time 设置为 time_sec。
 	# 这也会将剩余时间重置为 wait_time。
