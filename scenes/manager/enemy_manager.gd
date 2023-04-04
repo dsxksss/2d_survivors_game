@@ -30,7 +30,7 @@ func on_timer_timeout():
 	enemy.global_position = spawn_position
 
 func on_arena_difficulty_increased(arena_difficulty: int):
-	var time_offset = (.1 / 12) * arena_difficulty
-	time_offset = min(time_offset, .7)
+	var time_offset = (.1 / 5) * arena_difficulty
+	time_offset = min(time_offset, .9)
 	print(time_offset)
 	timer.wait_time = base_spawn_time - time_offset
