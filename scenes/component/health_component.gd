@@ -31,7 +31,7 @@ func get_health_percent() -> float:
 
 # 检查死亡函数
 func check_death():
-	if current_health == 0:
+	if current_health <= 0:
 		# 当受伤达到一定量级则通知触发died相关的信号
 		died.emit()
 		# 并且释放掉实例化了本组件的根场景

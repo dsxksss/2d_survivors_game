@@ -62,11 +62,11 @@ func check_deal_damage():
 func update_health_display():
 	health_bar.value = health_component.get_health_percent()
 		
-func on_body_entered(other_body: Node2D):
+func on_body_entered(_other_body: Node2D):
 	number_colliding_bodies += 1
 	check_deal_damage()
 	
-func on_body_exited(other_body: Node2D):
+func on_body_exited(_other_body: Node2D):
 	number_colliding_bodies -= 1	
 
 func on_damage_interval_timer_timeout():
