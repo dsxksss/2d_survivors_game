@@ -17,7 +17,7 @@ var arena_difficulty := 0
 func _ready() -> void:
 	timer.timeout.connect(on_timer_timeout)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# 提前计算下次生成竞技场难度提升时间
 	var next_time_target = timer.wait_time - ((arena_difficulty + 1) * DIFFICULTY_INTERVAL)
 	# 当结束时间小于或等于下个目标时间时
