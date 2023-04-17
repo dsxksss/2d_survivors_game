@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal upgrade_selected(upgrade: AbilityUpgrade)
 
+# 技能选择卡片页面场景
 @export var upgrade_card_scenc: PackedScene
 @onready var card_container: HBoxContainer = $%CardContainer
 

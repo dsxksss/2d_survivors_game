@@ -20,5 +20,4 @@ layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 2
 max_value = 1.0
-value = 0.5
 show_percentage = false
